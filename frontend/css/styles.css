@@ -135,6 +135,7 @@ footer {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: 15px;
 }
 .activity-card img {
   width: 100%;
@@ -166,6 +167,17 @@ footer {
 }
 .activity-card-image:hover {
   -webkit-filter: brightness(50%);
+
+}
+
+.activity-card p{
+  display:flex;
+  justify-content: space-between;
+  width:100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+ 
 }
 .experience-content ul li {
   margin-left: 16px;

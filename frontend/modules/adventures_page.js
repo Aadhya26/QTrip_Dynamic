@@ -5,6 +5,9 @@ import config from "../conf/index.js";
 function getCityFromURL(search) {
   // TODO: MODULE_ADVENTURES
   // 1. Extract the city id from the URL's Query Param and return it
+  const urlParams = new URLSearchParams(search);
+  let res = urlParams.get('city');
+  return(res)
 
 }
 
@@ -12,14 +15,44 @@ function getCityFromURL(search) {
 async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
+  try{
+    let res = await fetch('http://3.111.73.229:8082/adventures?' + new URLSearchParams({
+      city: city,
+      }));
+    let data = await res.json();
+    return data;}
+    catch(err){return null;}
 
 }
+
+
 
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
-
+  if (adventures) {
+    adventures.forEach((key) => {
+      addCard(key.id, key.name, key.costPerHead, key.duration, key.image, key.category);
+    });
+  }
+  function addCard(id, name, costPerHead, duration, image, category)
+  {
+  let advCard=document.createElement("div");
+  advCard.className="col-xl-3 col-sm-6 col-12"
+  advCard.innerHTML=`
+  
+  <a href="detail/?adventure=${id}" id="${id}"><div class="activity-card">
+        <img src="${image}">
+         <div class="category-banner"> ${category} </div>
+          <p>
+            <span style="text-align:left"><b>${name}</b> </br> Duration</span>
+            <span> ${costPerHead} </br> ${duration} Hours </span>
+          </p>
+       </div></a>
+  `
+  let advData = document.getElementById("data");
+  advData.append(advCard);}
 }
 
 //Implementation of filtering by duration which takes in a list of adventures, the lower bound and upper bound of duration and returns a filtered list of adventures.
