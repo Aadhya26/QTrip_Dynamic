@@ -99,10 +99,10 @@ function filterFunction(list, filters) {
   // 1. Handle the 3 cases detailed in the comments above and return the filtered list of adventures
   // 2. Depending on which filters are needed, invoke the filterByDuration() and/or filterByCategory() methods
 
-  let l=[];
   let flist=new Array();
   let dur=[];
   let d="";
+  let l=[];
 
   if((filters.category.length==0) && (filters.duration=="")){return list;}
 
@@ -125,10 +125,9 @@ function filterFunction(list, filters) {
     flist=filters.category;
     list=filterByCategory(list,flist)
   }
-  // Place holder for functionality to work in the Stubs
   return list;
 }
-
+  // Place holder for functionality to work in the Stubs
 //Implementation of localStorage API to save filters to local storage. This should get called everytime an onChange() happens in either of filter dropdowns
 function saveFiltersToLocalStorage(filters) {
   // TODO: MODULE_FILTERS

@@ -163,8 +163,10 @@ footer {
   width: 100%;
   cursor: pointer;
   -webkit-transition: 0.2s all;
-  border-radius: 2px;
+  border-radius: 4px;
+  padding:16 px;
 }
+
 .activity-card-image:hover {
   -webkit-filter: brightness(50%);
 
